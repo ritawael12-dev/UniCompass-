@@ -112,7 +112,6 @@
           await callChatGPT(gpa, degree, cvText, studentMsg, outputBox);
         }
       }
-
       async function callChatGPT(gpa, degree, cvText, studentMsg, outputBox) {
         let promptText = `You are an expert academic advisor. A student with a GPA of ${gpa} wants to pursue a ${degree}. CV content: ${cvText}. `;
         if (studentMsg) {
@@ -121,27 +120,35 @@
         promptText += `Provide 3 specific scholarship recommendations worldwide and 2 smart layout tips for their application. Keep the response friendly, cozy, formatted with clear bullets, and use clean simple text without markdown stars.`;
 
         try {
-          // استخدام سيرفر وسيط مجاني لتشغيل ChatGPT فوراً وبدون تعقيد مفاتيح
-          const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+          // سيرفر nexra المفتوح والمخصص لتطبيقات الموبايل والـ Front-end مباشرة
+          const response = await fetch("https://api.nexra.pro/v1/chat/completions", {
             method: "POST",
             headers: {
-              "Authorization": "Bearer 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", // مفتاح شغال وجاهز 100% من عندي
               "Content-Type": "application/json"
             },
             body: JSON.stringify({
-              model: "openai/gpt-4o-mini", // تشغيل موديل شات جيبيتي الذكي والسريع
-              messages: [{ role: "user", content: promptText }]
+              messages: [{ role: "user", content: promptText }],
+              model: "gpt-4o-mini",
+              stream: false
             })
           });
 
           const data = await response.json();
-          const aiResponse = data.choices[0].message.content;
-          outputBox.innerHTML = aiResponse.replace(/\n/g, "<br>").replace(/\*\*/g, "");
+          
+          // التأكد من أن السيرفر رجع بيانات صحيحة
+          if (data.choices && data.choices[0] && data.choices[0].message) {
+            const aiResponse = data.choices[0].message.content;
+            outputBox.innerHTML = aiResponse.replace(/\n/g, "<br>").replace(/\*\*/g, "");
+          } else {
+            outputBox.innerText = "سيرفر الـ AI مستجيب بس البيانات مش كاملة، اضغطي تاني كده! 🧭";
+          }
+          
         } catch (error) {
-          outputBox.innerText = "Oops! ChatGPT is temporarily busy. Just click the button again! 🧭";
+          outputBox.innerText = "حصل مشكلة في الاتصال بالسيرفر الجديد، اتأكدي إنك عملتي حفظ للكود وافتحي الصفحة تاني في كروم! 🧭";
           console.error(error);
         }
       }
+
     </script>
   </body>
 </html>
