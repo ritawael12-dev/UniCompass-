@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:wght@300..800&display=swap" rel="stylesheet">
-    <title>UniCompass - Sign In</title>
+    <title>UniCompass - Access Platform</title>
     
     <style>
       body { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDFBF7; display: flex; flex-direction: column; min-height: 100vh; }
@@ -13,10 +13,10 @@
       .links { display: flex; gap: 12px; align-items: center; }
       .links a { color: #F2E5C6; text-decoration: none; font-size: 13px; font-family: "Oswald", sans-serif; text-transform: uppercase; }
 
-      .signin-container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px; }
-      .signin-card { background-color: white; border: 1px solid #F2E5C6; border-radius: 16px; padding: 30px 20px; width: 100%; max-width: 360px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); box-sizing: border-box; text-align: center; }
-      .signin-card h2 { color: #4E0A0B; font-family: "Oswald", sans-serif; margin: 0 0 10px 0; font-size: 26px; text-transform: uppercase; }
-      .signin-card p { color: #731F29; font-size: 13px; margin: 0 0 25px 0; }
+      .auth-container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 20px; }
+      .auth-card { background-color: white; border: 1px solid #F2E5C6; border-radius: 16px; padding: 30px 20px; width: 100%; max-width: 360px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); box-sizing: border-box; text-align: center; }
+      .auth-card h2 { color: #4E0A0B; font-family: "Oswald", sans-serif; margin: 0 0 10px 0; font-size: 26px; text-transform: uppercase; }
+      .auth-card p { color: #731F29; font-size: 13px; margin: 0 0 25px 0; }
       
       .form-group { margin-bottom: 18px; text-align: left; }
       .form-group label { display: block; font-size: 12px; color: #4E0A0B; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; }
@@ -24,6 +24,10 @@
       
       .btn-submit { background-color: #731F29; color: white; border: none; width: 100%; padding: 14px; border-radius: 8px; font-family: "Oswald", sans-serif; font-size: 16px; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
       .status-msg { margin-top: 15px; font-size: 13px; color: #4E0A0B; }
+      
+      /* ستايل الرابط التبديل السفلّي */
+      .toggle-auth { margin-top: 20px; font-size: 13px; color: #4E0A0B; }
+      .toggle-auth span { color: #E38792; cursor: pointer; font-weight: bold; text-decoration: underline; }
     </style>
   </head>
   <body>
@@ -37,42 +41,80 @@
       </div>
     </header>
 
-    <main class="signin-container">
-      <div class="signin-card">
-        <h2>Welcome Back</h2>
-        <p>Login to your UniCompass account</p>
-        
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" id="userEmail" placeholder="enter your email">
+    <main class="auth-container">
+      <div class="auth-card" id="authCard">
+        <div id="signInSection">
+          <h2>Welcome Back</h2>
+          <p>Login to your UniCompass account</p>
+          
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="loginEmail" placeholder="enter your email">
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" placeholder="••••••••">
+          </div>
+
+          <button class="btn-submit" onclick="handleSignIn()">Sign In</button>
+          
+          <div class="toggle-auth">
+            Don't have an account? <span onclick="toggleForm('signup')">Sign Up</span>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" id="userPassword" placeholder="••••••••">
+        <div id="signUpSection" style="display: none;">
+          <h2>Create Account</h2>
+          <p>Join UniCompass to explore world scholarships</p>
+          
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="regName" placeholder="enter your name">
+          </div>
+
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="regEmail" placeholder="enter your email">
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="regPassword" placeholder="create password (min 6 characters)">
+          </div>
+
+          <button class="btn-submit" onclick="handleSignUp()">Sign Up</button>
+          
+          <div class="toggle-auth">
+            Already have an account? <span onclick="toggleForm('signin')">Sign In</span>
+          </div>
         </div>
 
-        <button class="btn-submit" onclick="handleSignIn()">Sign In</button>
         <div id="statusMessage" class="status-msg"></div>
       </div>
     </main>
 
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    <script>
+      // دالة سحرية بالجافا سكريبت لتبديل شكل الكارت بسلاسة وبدون تحميل صفحة جديدة
+      function toggleForm(formType) {
+        const signInSec = document.getElementById('signInSection');
+        const signUpSec = document.getElementById('signUpSection');
+        const statusBox = document.getElementById('statusMessage');
+        statusBox.innerText = ""; // مسح أي رسالة قديمة
 
-      // إعدادات سيرفر قاعدة البيانات الجاهزة والمفتوحة لمشروعك
-      const firebaseConfig = {
-        apiKey: "AIzaSyA3b4C5D6E7F8G9H0I1J2K3L4M5N6O7P8", 
-        authDomain: "unicompass-auth.firebaseapp.com"
-      };
+        if (formType === 'signup') {
+          signInSec.style.display = 'none';
+          signUpSec.style.display = 'block';
+        } else {
+          signInSec.style.display = 'block';
+          signUpSec.style.display = 'none';
+        }
+      }
 
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-
-      window.handleSignIn = async function() {
-        const email = document.getElementById('userEmail').value;
-        const pass = document.getElementById('userPassword').value;
+      // دالة تسجيل الدخول (Sign In)
+      function handleSignIn() {
+        const email = document.getElementById('loginEmail').value;
+        const pass = document.getElementById('loginPassword').value;
         const statusBox = document.getElementById('statusMessage');
 
         if (!email || !pass) {
@@ -81,24 +123,35 @@
           return;
         }
 
-        statusBox.innerText = "Checking credentials... 🔒";
-        statusBox.style.color = "#4E0A0B";
+        if(pass.length >= 6) {
+          statusBox.innerText = "Login Successful! Redirecting... 🎉";
+          statusBox.style.color = "green";
+          setTimeout(() => { window.location.href = "ai-analyzer.html"; }, 1300);
+        } else {
+          statusBox.innerText = "Password must be at least 6 characters!";
+          statusBox.style.color = "#731F29";
+        }
+      }
 
-        try {
-          // هنا الكود الحقيقي اللي بيكلم السيرفر ويتحقق من الحساب
-          // لتسهيل التجربة في العرض، لو كتب أي إيميل وباسورد أكتر من 6 حروف هيعتبره صح وينقله لصفحة الـ AI
-          if(pass.length >= 6) {
-            statusBox.innerText = "Login Successful! Redirecting... 🎉";
-            statusBox.style.color = "green";
-            setTimeout(() => {
-              window.location.href = "ai-analyzer.html";
-            }, 1500);
-          } else {
-            statusBox.innerText = "Password must be at least 6 characters!";
-            statusBox.style.color = "#731F29";
-          }
-        } catch (error) {
-          statusBox.innerText = "Invalid email or password. Try again.";
+      // دالة إنشاء حساب جديد (Sign Up)
+      function handleSignUp() {
+        const name = document.getElementById('regName').value;
+        const email = document.getElementById('regEmail').value;
+        const pass = document.getElementById('regPassword').value;
+        const statusBox = document.getElementById('statusMessage');
+
+        if (!name || !email || !pass) {
+          statusBox.innerText = "Please fill in all registration fields! 🧭";
+          statusBox.style.color = "#731F29";
+          return;
+        }
+
+        if(pass.length >= 6) {
+          statusBox.innerText = "Account Created Successfully! Welcome to UniCompass 🎉";
+          statusBox.style.color = "green";
+          setTimeout(() => { window.location.href = "ai-analyzer.html"; }, 1500);
+        } else {
+          statusBox.innerText = "Password must be at least 6 characters!";
           statusBox.style.color = "#731F29";
         }
       }
