@@ -1,117 +1,73 @@
 <!doctype html>
 <html lang="en">
   <head>
-     <meta charset="utf-8"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="style.css">
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Playfair+Display:ital,wght@1,400..900&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-     <title>Unicompass</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@1,400..900&family=Plus+Jakarta+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <title>UniCompass</title>
   </head>
-  <body>
+  <body style="background-color:#F2E5C6;">
 
-     <header>
-       <div class="logo">Uni<span>compass</span></div>
-       <nav class="nav-links">
-         <a href="#">Scholarships</a>
-         <a href="#">Living Costs</a>
-         <a href="#">AI Analysis</a>
-       </nav>
-       <div class="nav-buttons">
-         <a href="#" class="btn-link">Sign in</a>
-         <button class="btn-main">Contact us</button>
-       </div>
-     </header>
+    <header class="header">
+      <img class="logo" src="logo.png" alt="Logo"/> 
+      <div class="links">
+        <a href="#">scholarships</a>
+        <a href="#">living cost</a>
+        <a href="#">Ai analyzer</a>
+        <button class="btn-signin">sign in</button>
+      </div>
+    </header>
 
-     <section class="hero-section">
-       <div class="hero-badge">
-         <img src="logo.png" alt="logo" class="logo">
-         <span>Your Journey Starts Here!</span>
-       </div>
-       
-       <h1 class="hero-title">
-         We guide you step-by-step from choosing your <br>
-         <span class="text-accent-italic">destnation</span>to<span class="text-highlight">polishing</span> <br>
-         your application documantry
-       </h1>
-       
-       <p class="hero-subtitle">Discover thousands of fully funded scholarships and living expenses to map your global growth and learning process.</p>
-       
-       <div class="search-box-container">
-         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-         <input type="search" placeholder="Search for universities, countries..."/>
-         <button class="search-btn">Search</button>
-       </div>
-     </section>
+    <div class="landing-page">
+      <div class="hero-content">
+        <h2><em>Welcome</em> students!</h2>
+        <h1>Your Ultimate <mark style="background-color:#E38792; color:#4E0A0B;">Compass</mark> to a World of <i>Opportunities</i></h1>
+        <p class="p"><em>Your <mark style="background-color:#521e1f; color:#E38792;">all-in-one</mark> platform to discover fully funded scholarships, map your international student budget, and secure your dream university.</em></p>
+        <div class="search">
+          <input placeholder="search now!"/>
+          <button>search</button>
+        </div>
+      </div>
+    </div>
 
-     <section class="features-section">
-       <div class="section-header">
-         <h2><span>Explore our</span> main tools</h2>
-       </div>
-
-       <div class="services-container">
-         <div class="services-card card-khaki">
-           <div class="card-icon-wrapper">
-             <i class="fa-solid fa-graduation-cap"></i>
-           </div>
-           <h3>Scholarships Hub</h3>
-           <p>A direct database for fully funded global scholarships.</p>
-           <div class="card-shape-decor"></div>
-         </div>
-
-         <div class="services-card card-garnet">
-           <div class="card-icon-wrapper">
-             <i class="fa-solid fa-wallet"></i>
-           </div>
-           <h3>Living Costs</h3>
-           <p>Detailed statistics about rent, food, and student expenses.</p>
-           <div class="card-shape-decor"></div>
-         </div>
-         <div class="services-card card-pink">
-           <div class="card-icon-wrapper">
-             <i class="fa-solid fa-robot"></i>
-           </div>
-           <h3>AI CV Analyzer</h3>
-           <p>Optimize your resume to match international standards.</p>
-           <div class="card-shape-decor"></div>
-         </div>
-       </div>
-     </section>
-
-     <section class="community-section">
-       <div class="section-header-center">
-         <h2>Your dream is closer than you think</h2>
-         <p>UniCompass was built by students, for students. We know how overwhelming the journey can be, but you don’t have to walk it alone.</p>
-       </div>
+    <section class="community-section" style="background-color:#F2E5C6;">
+      <div class="section-header-center" style="background-color:#F2E5C6;">
+        <h2>Your dream is closer than you think</h2>
+        <p>UniCompass was built by students, for students. We know how overwhelming the journey can be, but you don’t have to walk it alone.</p>
+      </div>
          
-       <div class="photo-grid">
+      <div class="photo-grid">
+         
          <div class="student-card">
-           <div class="img-wrapper">
-             <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&auto=format&fit=crop&q=80" alt="discover">
+           <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80" alt="discover" class="card-bg-img">
+           <div class="card-content">
              <div class="step-number">1</div>
+             <h3>Discover Opportunities</h3>
+             <p>Explore thousands of fully funded scholarships and map your global growth.</p>
            </div>
-           <h3>Discover Opportunities</h3>
          </div>
 
          <div class="student-card">
-           <div class="img-wrapper">
-             <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&auto=format&fit=crop&q=80" alt="plan">
+           <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80" alt="plan" class="card-bg-img">
+           <div class="card-content">
              <div class="step-number">2</div>
+             <h3>Plan Your Budget</h3>
+             <p>Detailed statistics about rent, food, and daily student expenses abroad.</p>
            </div>
-           <h3>Plan Your Budget</h3>
          </div>
 
          <div class="student-card">
-           <div class="img-wrapper">
-             <img src="students.png" alt="land">
+           <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&auto=format&fit=crop&q=80" alt="land" class="card-bg-img">
+           <div class="card-content">
              <div class="step-number">3</div>
+             <h3>Land Dream University</h3>
+             <p>Polish your application documents and submit your profile with absolute confidence.</p>
            </div>
-           <h3>Land Dream University</h3>
          </div>
-       </div>
-     </section>
+
+      </div>
+    </section> 
 
   </body>
 </html>
