@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <title>UniCompass - Living Cost</title>
+  </head>
+  <body>
+
+    <!-- 1️⃣ Navbar -->
+    <header class="header">
+      <img class="logo" src="logo.png" alt="Logo"/> 
+      <div class="links">
+        <a href="scholarships.html">scholarships</a>
+        <a href="living-cost.html">living cost</a>
+        <a href="#">Ai analyzer</a>
+        <button class="btn-signin">sign in</button>
+      </div>
+    </header>
+
+    <!-- 2️⃣ Country Selector & Overview -->
+    <section class="cost-hero">
+      <h1>Cost of Living Guide</h1>
+      <p class="subtitle">Select your destination to see real student expenses</p>
+      
+      <div class="selector-box">
+        <select class="country-select">
+          <option value="germany">🇩🇪 Germany</option>
+          <option value="uk">🇬🇧 United Kingdom</option>
+          <option value="spain">🇪🇸 Spain</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- 3️⃣ Expense Breakdown -->
+    <section class="cost-container">
+      
+      <div class="overview-card">
+        <h3>Estimated Monthly Budget</h3>
+        <p class="price-range">€850 - €1,050 / mo</p>
+      </div>
+
+      <div class="expense-card">
+        <div class="expense-icon">🏠</div>
+        <div class="expense-info">
+          <h4>Accommodation</h4>
+          <p>Student dorms cost around €300-€400/mo. Private rooms go up to €550/mo.</p>
+        </div>
+      </div>
+
+      <div class="expense-card">
+        <div class="expense-icon">🍏</div>
+        <div class="expense-info">
+          <h4>Food & Groceries</h4>
+          <p>Expect to spend around €200-€250/mo if you cook at home.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 4️⃣ Student Survival Guide Links -->
+    <section class="guide-links-section">
+      <h3>🎒 Student Survival Links</h3>
+      
+      <div class="guide-category">
+        <h4>Housing Websites</h4>
+        <a href="https://www.wg-gesucht.de" target="_blank" class="guide-link">🌐 Find Student Housing (WG-Gesucht)</a>
+      </div>
+
+      <div class="guide-category">
+        <h4>Student Jobs</h4>
+        <a href="https://www.indeed.com" target="_blank" class="guide-link">💼 Search Part-Time Jobs (Indeed)</a>
+      </div>
+
+      <div class="guide-category">
+        <h4>Cheapest Supermarkets</h4>
+        <p class="shop-names">🛒 Shop at: <strong>Aldi, Lidl, Netto</strong> for the best prices.</p>
+      </div>
+
+      <div class="guide-category">
+        <h4>First-Day Essentials</h4>
+        <p class="shop-names">📦 Get cheap blankets & kitchen tools from: <strong>IKEA, Action, or thrift shops</strong>.</p>
+      </div>
+
+    </section>
+<!-- 🧮 Budget Calculator Section -->
+<section style="padding: 0 15px 30px 15px; background-color: #FDFBF7;">
+  <div class="calc-card">
+    <h3>🧮 Calculate Your Custom Budget</h3>
+    
+    <div class="calc-input-group">
+      <label>Rent / Accommodation (€)</label>
+      <input type="number" id="rentInput" placeholder="e.g. 350">
+    </div>
+
+    <div class="calc-input-group">
+      <label>Food & Groceries (€)</label>
+      <input type="number" id="foodInput" placeholder="e.g. 200">
+    </div>
+
+    <button class="btn-calc" onclick="calculateTotal()">Calculate Total</button>
+    
+    <p class="calc-result" id="totalResult">Total: €0 / month</p>
+  </div>
+</section>
+
+<!-- ⚡ JavaScript Code to make it work -->
+<script>
+  function calculateTotal() {
+    let rent = parseFloat(document.getElementById('rentInput').value) || 0;
+    let food = parseFloat(document.getElementById('foodInput').value) || 0;
+    let total = rent + food;
+    document.getElementById('totalResult').innerText = "Total: €" + total + " / month";
+  }
+</script>
+
+  </body>
+</html>

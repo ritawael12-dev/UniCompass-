@@ -245,3 +245,480 @@ body {
   max-width: 700px;
   align-items: center;
 }
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 15px;
+    flex-wrap: wrap;
+  }
+
+  .links {
+    gap: 5px;
+  }
+
+  .links a {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  .links .btn-signin {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .landing-page {
+    padding: 40px 20px 60px 20px;
+    text-align: center;
+  }
+
+  .landing-page h1 {
+    font-size: 28px;
+  }
+
+  .p {
+    font-size: 14px;
+    margin: 0 auto 20px auto;
+  }
+
+  .search input {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .photo-grid {
+    flex-direction: column;
+    height: auto;
+    gap: 15px;
+  }
+
+  .student-card {
+    height: 200px;
+    flex: none !important;
+    width: 100%;
+  }
+
+  .student-card:hover {
+    height: 280px;
+  }
+
+  .student-card .card-content p {
+    opacity: 1;
+    transform: translateY(0);
+  }
+.scholarships-hero {
+  background-color: #4E0A0B;
+  padding: 40px 20px;
+  text-align: center;
+  color: #F2E5C6;
+}
+
+.scholarships-hero h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+}
+
+.search-box input {
+  background-color: #E38792;
+  color: black;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  height: 45px;
+  width: 100%;
+  padding: 0 90px 0 20px;
+}
+
+.search-box button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background-color: #F2E5C6;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 20px;
+  height: 35px;
+  color: #4E0A0B;
+  font-family: "Oswald", sans-serif;
+  cursor: pointer;
+}
+
+.filter-container {
+  display: flex;
+  gap: 10px;
+  padding: 20px 15px;
+  overflow-x: auto;
+  background-color: #FDFBF7;
+  white-space: nowrap;
+}
+
+.filter-btn {
+  background-color: #F2E5C6;
+  color: #4E0A0B;
+  border: none;
+  padding: 6px 15px;
+  border-radius: 15px;
+  font-family: "Oswald", sans-serif;
+  font-size: 13px;
+}
+
+.filter-btn.active {
+  background-color: #731F29;
+  color: white;
+}
+
+.scholarships-grid {
+  padding: 20px 15px;
+  background-color: #FDFBF7;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.scholarship-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #F2E5C6;
+}
+
+.funding-tag {
+  background-color: #E38792;
+  color: #4E0A0B;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.scholarship-card h3 {
+  color: #4E0A0B;
+  margin: 15px 0 5px 0;
+  font-size: 20px;
+}
+
+.university {
+  color: #7A7A7A;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.card-details {
+  display: flex;
+  gap: 15px;
+  font-size: 13px;
+  color: #4E0A0B;
+  margin-bottom: 15px;
+}
+
+.btn-details {
+  background-color: #4E0A0B;
+  color: #F2E5C6;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  font-family: "Oswald", sans-serif;
+  cursor: pointer;
+}
+.header .logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.scholarship-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scholarship-card:active {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(78, 10, 11, 0.1);
+}
+.cost-hero {
+  background-color: #4E0A0B;
+  padding: 40px 20px;
+  text-align: center;
+  color: #F2E5C6;
+}
+
+.cost-hero h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #E38792;
+  margin-bottom: 20px;
+}
+
+.country-select {
+  background-color: #F2E5C6;
+  color: #4E0A0B;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: "Oswald", sans-serif;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+  max-width: 200px;
+}
+
+.cost-container {
+  padding: 20px 15px;
+  background-color: #FDFBF7;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.overview-card {
+  background-color: #731F29;
+  color: #F2E5C6;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.price-range {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-top: 5px;
+}
+
+.expense-card {
+  background-color: white;
+  border: 1px solid #F2E5C6;
+  border-radius: 16px;
+  padding: 15px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.expense-icon {
+  font-size: 30px;
+  background-color: #FDFBF7;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.expense-info h4 {
+  color: #4E0A0B;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.expense-info p {
+  color: #666;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.guide-links-section {
+  padding: 25px 15px;
+  background-color: #FDFBF7;
+}
+
+.guide-links-section h3 {
+  color: #4E0A0B;
+  margin-bottom: 20px;
+  font-size: 20px;
+  border-bottom: 2px solid #E38792;
+  padding-bottom: 5px;
+}
+
+.guide-category {
+  background-color: white;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border-left: 4px solid #731F29;
+}
+
+.guide-category h4 {
+  color: #731F29;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.guide-link {
+  color: #4E0A0B;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.guide-link:hover {
+  color: #E38792;
+}
+
+.shop-names {
+  font-size: 13px;
+  color: #464646;
+}
+
+/* 📱 كود الآلة الحاسبة الشيك */
+.calc-card {
+  background-color: white;
+  border: 2px dashed #E38792;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.calc-card h3 {
+  color: #4E0A0B;
+  margin-bottom: 15px;
+  font-size: 18px;
+  border: none;
+}
+
+.calc-input-group {
+  margin-bottom: 12px;
+}
+
+.calc-input-group label {
+  display: block;
+  font-size: 13px;
+  color: #4E0A0B;
+  margin-bottom: 5px;
+}
+
+.calc-input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #F2E5C6;
+  border-radius: 8px;
+  outline: none;
+  background-color: #FDFBF7;
+}
+
+.btn-calc {
+  background-color: #4E0A0B;
+  color: #F2E5C6;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: "Oswald", sans-serif;
+  margin-top: 10px;
+}
+
+.calc-result {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #4E0A0B;
+  text-align: center;
+  font-weight: bold;
+}
+.ai-hero {
+  background-color: #4E0A0B;
+  padding: 40px 20px;
+  text-align: center;
+  color: #F2E5C6;
+}
+
+.ai-hero h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.ai-subtitle {
+  font-size: 14px;
+  color: #E38792;
+}
+
+.ai-container {
+  padding: 20px 15px;
+  background-color: #FDFBF7;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ai-form-card {
+  background-color: white;
+  border: 1px solid #F2E5C6;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.ai-form-card h3 {
+  color: #4E0A0B;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: #4E0A0B;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #F2E5C6;
+  border-radius: 8px;
+  outline: none;
+  background-color: #FDFBF7;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+.btn-ai-analyze {
+  background-color: #731F29;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  font-family: "Oswald", sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.ai-result-box {
+  background-color: white;
+  border: 2px dashed #731F29;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.ai-result-box h4 {
+  color: #4E0A0B;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.initial-msg {
+  font-size: 13px;
+  color: #7A7A7A;
+  line-height: 1.5;
+}
+
