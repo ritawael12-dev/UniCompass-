@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>UniCompass - Scholarship Prep Hub</title>
+    
+    <style>
+      :root {
+        --primary: #4E0A0B;
+        --secondary: #731F29;
+        --accent: #E38792;
+        --beige: #F2E5C6;
+        --bg-cozy: #FDFBF7;
+        --card-bg: #ffffff;
+      }
+
+      body { 
+        margin: 0; 
+        font-family: 'Plus Jakarta Sans', sans-serif; 
+        background-color: var(--bg-cozy); 
+        color: var(--primary); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+      }
+      
+      /* Navbar */
+      .header { background-color: var(--primary); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(78, 10, 11, 0.08); }
+      .header .logo { width: 40px; height: 40px; object-fit: contain; border-radius: 8px; }
+      .links { display: flex; gap: 15px; align-items: center; overflow-x: auto; white-space: nowrap; }
+      .links::-webkit-scrollbar { display: none; }
+      .links a { color: var(--beige); text-decoration: none; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; }
+      .links a.active { color: white; border-bottom: 2px solid var(--beige); padding-bottom: 4px; }
+
+      .main-container { flex: 1; width: 100%; max-width: 650px; margin: 0 auto; padding: 35px 20px; box-sizing: border-box; }
+      
+      .hub-title { text-align: center; margin-bottom: 35px; }
+      .hub-title h1 { font-family: 'Cinzel', serif; font-size: 28px; font-weight: 700; color: var(--primary); margin: 0; }
+      .hub-title p { color: var(--secondary); font-size: 13px; margin-top: 8px; }
+
+      /* Floating Cards */
+      .premium-card {
+        background: var(--card-bg);
+        border: 1px solid rgba(242, 229, 198, 0.5);
+        border-radius: 20px;
+        padding: 24px;
+        margin-bottom: 25px;
+        box-shadow: 0 10px 30px rgba(78, 10, 11, 0.03);
+        box-sizing: border-box;
+      }
+      .premium-card h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 18px;
+        color: var(--primary);
+        margin: 0 0 20px 0;
+        border-bottom: 1px solid var(--beige);
+        padding-bottom: 10px;
+      }
+
+      /* AI Simulator Styles */
+      .selector { width: 100%; padding: 14px; border: 1px solid var(--beige); border-radius: 12px; background-color: var(--bg-cozy); font-family: inherit; color: var(--primary); font-weight: 600; outline: none; margin-bottom: 15px; }
+      .question-box { background: var(--primary); color: white; padding: 18px; border-radius: 14px; margin-bottom: 15px; font-weight: 500; font-size: 14px; line-height: 1.5; border-left: 5px solid var(--accent); }
+      .answer-input { width: 100%; padding: 14px; border: 1px solid var(--beige); border-radius: 12px; background: var(--bg-cozy); font-family: inherit; font-size: 14px; color: var(--primary); resize: none; box-sizing: border-box; outline: none; }
+      .answer-input:focus { border-color: var(--secondary); }
+      
+      .btn-action { background: var(--secondary); color: white; border: none; padding: 12px 20px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; text-transform: uppercase; width: 100%; margin-top: 10px; letter-spacing: 0.5px; }
+      .btn-action:hover { background: var(--primary); }
+
+      .ai-feedback { background: #F4EFE4; border-radius: 12px; padding: 15px; margin-top: 15px; font-size: 13px; line-height: 1.5; border-left: 4px solid var(--secondary); display: none; }
+
+      /* Course Hub Grid */
+      .course-section-title { font-family: 'Cinzel', serif; font-size: 14px; color: var(--secondary); margin: 20px 0 10px 0; text-transform: uppercase; letter-spacing: 1px; }
+      .course-list { display: flex; flex-direction: column; gap: 12px; }
+      .course-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        background: var(--bg-cozy);
+        border: 1px solid rgba(242, 229, 198, 0.4);
+        border-radius: 12px;
+      }
+      .course-info h4 { margin: 0; font-size: 14px; color: var(--primary); font-weight: 600; }
+      .course-info p { margin: 2px 0 0 0; font-size: 11px; color: var(--secondary); opacity: 0.8; }
+      .course-badge { background: var(--primary); color: var(--beige); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; }
+      .course-link { background: transparent; color: var(--secondary); text-decoration: none; border: 1px solid var(--secondary); padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; text-transform: uppercase; transition: all 0.2s; }
+      .course-link:hover { background: var(--secondary); color: white; }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <header class="header">
+      <img class="logo" src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=100&auto=format&fit=crop&q=60" alt="Logo"/> 
+      <div class="links">
+        <a href="scholarships.html">scholarships</a>
+        <a href="living-cost.html">living cost</a>
+        <a href="ai-analyzer.html">Ai analyzer</a>
+        <a href="experiences.html">Community</a>
+        <a href="survival-hub.html">Survival Hub</a>
+        <a href="prep-hub.html" class="active">Prep Hub</a>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <div class="hub-title">
+        <h1>Scholarship Prep Hub</h1>
+        <p>Train with our AI interviewer and access world-class curated student courses.</p>
+      </div>
+
+      <div class="premium-card">
+        <h2>🤖 AI Interview Simulator</h2>
+        <p style="font-size:12px; color: var(--secondary); margin-top:-10px; margin-bottom:15px;">Select a topic to practice real scholarship interview questions:</p>
+        
+        <select class="selector" id="topicSelect" onchange="generateQuestion()">
+          <option value="passion">Personal Motivation & Passion ✨</option>
+          <option value="academic">Academic Goals & Major 📚</option>
+          <option value="culture">Cultural Adaptation & Struggles 🌍</option>
+        </select>
+
+        <div class="question-box" id="questionDisplay">
+          Click generate to reveal your first challenge!
+        </div>
+
+        <textarea class="answer-input" id="userAnswer" rows="4" placeholder="Type your answer here in English or Arabic..."></textarea>
+        
+        <button class="btn-action" onclick="analyzeAnswer()">Submit & Get AI Evaluation</button>
+        
+        <div class="ai-feedback" id="feedbackDisplay">
+        </div>
+      </div>
+
+      <div class="premium-card">
+        <h2>🎓 Excellence Academy</h2>
+        
+        <div class="course-section-title">💻 Tech & Coding Majors</div>
+        <div class="course-list">
+          <div class="course-row">
+            <div class="course-info">
+              <h4>CS50: Introduction to Computer Science</h4>
+              <p>Harvard University's legendary tech foundation course.</p>
+            </div>
+            <a href="https://pll.harvard.edu/course/cs50-introduction-computer-science" target="_blank" class="course-link">Enroll</a>
+          </div>
+          <div class="course-row">
+            <div class="course-info">
+              <h4>Responsive Web Design Blueprint</h4>
+              <p>FreeCodeCamp's step-by-step HTML, CSS, and UI path.</p>
+            </div>
+            <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/" target="_blank" class="course-link">Enroll</a>
+          </div>
+        </div>
+
+        <div class="course-section-title">🎯 Soft Skills & Applications</div>
+        <div class="course-list">
+          <div class="course-row">
+            <div class="course-info">
+              <h4>Writing Winning Motivation Letters</h4>
+              <p>Master the art of storytelling for global scholarships.</p>
+            </div>
+            <a href="https://www.coursera.org/" target="_blank" class="course-link">Enroll</a>
+          </div>
+          <div class="course-row">
+            <div class="course-info">
+              <h4>Dynamic Public Speaking</h4>
+              <p>Learn to present your ideas fearlessly in front of interview boards.</p>
+            </div>
+            <a href="https://www.coursera.org/specializations/public-speaking" target="_blank" class="course-link">Enroll</a>
+          </div>
+        </div>
+
+        <div class="course-section-title">🗣️ Language Micro-Tracks</div>
+        <div class="course-list">
+          <div class="course-row">
+            <div class="course-info">
+              <h4>IELTS Academic Preparation <span class="course-badge">English</span></h4>
+              <p>Official practice tracks to hit band 7.0+ easily.</p>
+            </div>
+            <a href="https://www.edx.org/learn/ielts" target="_blank" class="course-link">Enroll</a>
+          </div>
+          <div class="course-row">
+            <div class="course-info">
+              <h4>Italian Language & Culture <span class="course-badge">Italian</span></h4>
+              <p>Perfect beginner track for DSU/MAECI scholarship seekers.</p>
+            </div>
+            <a href="https://www.edx.org/learn/italian" target="_blank" class="course-link">Enroll</a>
+          </div>
+          <div class="course-row">
+            <div class="course-info">
+              <h4>First Steps in Korean Language <span class="course-badge">Korean</span></h4>
+              <p>Yonsei University's top-rated track for global GKS applicants.</p>
+            </div>
+            <a href="https://www.coursera.org/learn/learn-korean" target="_blank" class="course-link">Enroll</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <script>
+      const questionsPool = {
+        passion: [
+          "Why do you deserve this specific scholarship, and how will it change your future?",
+          "Tell us about a time you faced a massive failure. How did you react and overcome it?",
+          "What makes you unique compared to thousands of international applicants applying this year?"
+        ],
+        academic: [
+          "Why did you choose Software Engineering/Computer Science instead of any other major?",
+          "Can you talk about a project you built yourself or a tech concept that genuinely fascinates you?",
+          "Where do you see your academic career heading exactly 5 years from now?"
+        ],
+        culture: [
+          "How do you plan to handle severe homesickness or language barriers during your first semester abroad?",
+          "If you have a major conflict with a roommate from a completely different culture, how will you resolve it?",
+          "Why did you choose this specific country (like Italy or South Korea) for your studies?"
+        ]
+      };
+
+      let currentQuestion = "";
+
+      function generateQuestion() {
+        const topic = document.getElementById('topicSelect').value;
+        const pool = questionsPool[topic];
+        const randomIndex = Math.floor(Math.random() * pool.length);
+        currentQuestion = pool[randomIndex];
+        
+        document.getElementById('questionDisplay').innerText = "🚩 Question: " + currentQuestion;
+        document.getElementById('feedbackDisplay').style.display = 'none';
+        document.getElementById('userAnswer').value = '';
+      }
+
+      function analyzeAnswer() {
+        const answer = document.getElementById('userAnswer').value;
+        if (!answer || answer.length < 10) {
+          alert("Your answer is a bit too short. Try to write a detailed, passionate answer to get a proper AI analysis! 🧭");
+          return;
+        }
+
+        const feedbackBox = document.getElementById('feedbackDisplay');
+        feedbackBox.style.display = 'block';
+        feedbackBox.innerHTML = `⏳ <strong>UniCompass AI is analyzing your structure...</strong>`;
+
+        setTimeout(() => {
+          feedbackBox.innerHTML = `
+            <strong>✨ UniCompass AI Evaluation:</strong><br><br>
+            • <strong>Structure:</strong> Great effort! Your response has solid points. To maximize your score, try using the <strong>STAR method</strong> (Situation, Task, Action, Result) to tell your story concisely.<br><br>
+            • <strong>Pro-Tip for the Board:</strong> Make sure to link your passion for tech directly to how you will give back to the university community. Emphasize your self-study journey! 💪🎨
+          `;
+        }, 1200);
+      }
+
+      window.onload = function() {
+        generateQuestion();
+      };
+    </script>
+  </body>
+</html>

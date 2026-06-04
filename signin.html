@@ -25,7 +25,7 @@
       .btn-submit { background-color: #731F29; color: white; border: none; width: 100%; padding: 14px; border-radius: 8px; font-family: "Oswald", sans-serif; font-size: 16px; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
       .status-msg { margin-top: 15px; font-size: 13px; color: #4E0A0B; }
       
-      /* ستايل الرابط التبديل السفلّي */
+
       .toggle-auth { margin-top: 20px; font-size: 13px; color: #4E0A0B; }
       .toggle-auth span { color: #E38792; cursor: pointer; font-weight: bold; text-decoration: underline; }
     </style>
@@ -95,12 +95,13 @@
     </main>
 
     <script>
-      // دالة سحرية بالجافا سكريبت لتبديل شكل الكارت بسلاسة وبدون تحميل صفحة جديدة
+
       function toggleForm(formType) {
         const signInSec = document.getElementById('signInSection');
         const signUpSec = document.getElementById('signUpSection');
         const statusBox = document.getElementById('statusMessage');
-        statusBox.innerText = ""; // مسح أي رسالة قديمة
+        statusBox.innerText = ""; 
+        
 
         if (formType === 'signup') {
           signInSec.style.display = 'none';
@@ -111,7 +112,6 @@
         }
       }
 
-      // دالة تسجيل الدخول (Sign In)
       function handleSignIn() {
         const email = document.getElementById('loginEmail').value;
         const pass = document.getElementById('loginPassword').value;
@@ -133,7 +133,6 @@
         }
       }
 
-      // دالة إنشاء حساب جديد (Sign Up)
       function handleSignUp() {
         const name = document.getElementById('regName').value;
         const email = document.getElementById('regEmail').value;

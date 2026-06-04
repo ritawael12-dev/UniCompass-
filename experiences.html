@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght=200..700&family=Plus+Jakarta+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <title>UniCompass - Student Experiences</title>
+    
+    <style>
+      body { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDFBF7; color: #4E0A0B; display: flex; flex-direction: column; min-height: 100vh; }
+      
+      .header { background-color: #4E0A0B; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
+      .header .logo { width: 45px; height: 45px; object-fit: contain; border-radius: 8px; }
+      .links { display: flex; gap: 12px; align-items: center; }
+      .links a { color: #F2E5C6; text-decoration: none; font-size: 13px; font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
+      .links a.active { color: white; border-bottom: 2px solid #F2E5C6; }
+
+      .main-container { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 30px 15px; box-sizing: border-box; width: 100%; max-width: 600px; margin: 0 auto; }
+      .tracker-title { text-align: center; margin-bottom: 30px; }
+      .tracker-title h1 { font-family: "Oswald", sans-serif; font-size: 30px; color: #4E0A0B; margin: 0; text-transform: uppercase; }
+      .tracker-title p { color: #731F29; font-size: 14px; margin-top: 5px; }
+      
+      .experience-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+      
+      .exp-card { background-color: white; border: 1px solid #F2E5C6; border-radius: 16px; padding: 20px; box-shadow: 0 4px 12px rgba(78, 10, 11, 0.03); box-sizing: border-box; border-left: 5px solid #731F29; }
+      .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px dashed #F2E5C6; }
+      .student-info h3 { margin: 0; font-family: "Oswald", sans-serif; font-size: 18px; color: #4E0A0B; text-transform: uppercase; letter-spacing: 0.5px; }
+      .student-info span { font-size: 12px; color: #731F29; display: block; margin-top: 2px; }
+      .destination-badge { background-color: #4E0A0B; color: #F2E5C6; padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; font-family: "Oswald", sans-serif; }
+      .exp-body { font-size: 14px; line-height: 1.6; color: #4E0A0B; margin: 0; font-style: italic; }
+      
+      .exp-image { width: 100%; max-height: 250px; object-fit: cover; border-radius: 12px; margin-top: 15px; border: 1px solid #F2E5C6; }
+
+      .form-card { background-color: white; border: 1px solid #F2E5C6; border-radius: 16px; padding: 25px 20px; width: 100%; box-shadow: 0 4px 15px rgba(78, 10, 11, 0.02); box-sizing: border-box; margin-top: 40px; border-top: 4px solid #731F29; }
+      .form-card h2 { font-family: "Oswald", sans-serif; margin: 0 0 20px 0; text-transform: uppercase; font-size: 22px; color: #4E0A0B; text-align: center; }
+      
+      .form-group { margin-bottom: 15px; }
+      .form-group label { display: block; font-size: 11px; color: #4E0A0B; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+      .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #F2E5C6; border-radius: 8px; outline: none; background-color: #FDFBF7; font-family: inherit; font-size: 14px; color: #4E0A0B; box-sizing: border-box; }
+      .form-group input:focus, .form-group textarea:focus { border-color: #731F29; }
+      
+      .file-input-wrapper { display: block; background-color: #FDFBF7; border: 1px dashed #731F29; border-radius: 8px; padding: 12px; text-align: center; cursor: pointer; color: #731F29; font-size: 13px; font-weight: bold; }
+      .file-input-wrapper input { display: none; }
+
+      .btn-submit { background-color: #731F29; color: white; border: none; padding: 14px; border-radius: 8px; font-family: "Oswald", sans-serif; font-size: 15px; cursor: pointer; text-transform: uppercase; width: 100%; letter-spacing: 1px; margin-top: 10px; transition: background 0.3s; }
+      .btn-submit:hover { background-color: #4E0A0B; }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <header class="header">
+      <img class="logo" src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=100&auto=format&fit=crop&q=60" alt="Logo"/> 
+      <div class="links">
+        <a href="scholarships.html">scholarships</a>
+        <a href="living-cost.html">living cost</a>
+        <a href="ai-analyzer.html">Ai analyzer</a>
+        <a href="experiences.html" class="active">Community</a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+      <div class="tracker-title">
+        <h1>Global Student Community</h1>
+        <p>Real stories, tips, and struggles shared by international students worldwide</p>
+      </div>
+
+      <div class="experience-grid" id="experienceGrid">
+        
+        <div class="exp-card">
+          <div class="exp-header">
+            <div class="student-info">
+              <h3>Malak Ahmed</h3>
+              <span>Software Engineering Student</span>
+            </div>
+            <div class="destination-badge">Italy 🇮🇹</div>
+          </div>
+          <p class="exp-body">
+            "Getting my DSU scholarship in Italy was a turning point! The biggest challenge was the paperwork and getting the Codice Fiscale, but the cozy student community in Milan helped me survive. Always start your visa documents 3 months early!"
+          </p>
+          <img class="exp-image" src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=500&auto=format&fit=crop&q=80" alt="Italy Travel">
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <div class="student-info">
+              <h3>Ji-Hoon Kim</h3>
+              <span>Computer Science Major</span>
+            </div>
+            <div class="destination-badge">South Korea 🇰🇷</div>
+          </div>
+          <p class="exp-body">
+            "Studying under the GKS scholarship in Seoul is amazing but intense. Budget hack: Do all your stationery and room decor shopping at Daiso, and use KakaoMap to find your way around. The lifestyle here is fast, but completely worth it!"
+          </p>
+          <img class="exp-image" src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=500&auto=format&fit=crop&q=80" alt="Seoul Travel">
+        </div>
+
+      </div>
+
+      <div class="form-card">
+        <h2>✨ Share Your Journey</h2>
+        
+        <div class="form-group">
+          <label>Your Full Name</label>
+          <input type="text" id="studentName" placeholder="e.g., Rita">
+        </div>
+        
+        <div class="form-group">
+          <label>Your Major / Field</label>
+          <input type="text" id="studentField" placeholder="e.g., Aspiring Software Engineer">
+        </div>
+
+        <div class="form-group">
+          <label>Destination Country</label>
+          <input type="text" id="studentDest" placeholder="e.g., Spain 🇪🇸">
+        </div>
+
+        <div class="form-group">
+          <label>Your Experience & Advice</label>
+          <textarea id="studentText" rows="4" style="resize: none;" placeholder="Share your tips, hacks, or struggles..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Upload a Memory (Optional Photo)</label>
+          <label class="file-input-wrapper">
+            📷 Choose Photo from Gallery
+            <input type="file" id="studentPhoto" accept="image/*">
+          </label>
+        </div>
+
+        <button class="btn-submit" onclick="addExperience()">Post to Community</button>
+      </div>
+    </main>
+
+    <script>
+      function addExperience() {
+        const name = document.getElementById('studentName').value;
+        const field = document.getElementById('studentField').value;
+        const dest = document.getElementById('studentDest').value;
+        const text = document.getElementById('studentText').value;
+        const photoInput = document.getElementById('studentPhoto');
+        const grid = document.getElementById('experienceGrid');
+
+        if(!name || !field || !dest || !text) {
+          alert("Please fill in all fields to share your beautiful story! 🧭");
+          return;
+        }
+
+        const newCard = document.createElement('div');
+        newCard.className = 'exp-card';
+        newCard.style.borderLeft = '5px solid #E38792'; 
+
+        let cardContent = `
+          <div class="exp-header">
+            <div class="student-info">
+              <h3>${name}</h3>
+              <span>${field}</span>
+            </div>
+            <div class="destination-badge">${dest}</div>
+          </div>
+          <p class="exp-body">"${text}"</p>
+        `;
+
+        if (photoInput.files && photoInput.files[0]) {
+          const reader = new FileReader();
+          
+          reader.onload = function(e) {
+
+            cardContent += `<img class="exp-image" src="${e.target.result}" alt="Student Memory">`;
+            newCard.innerHTML = cardContent;
+            grid.insertBefore(newCard, grid.firstChild);
+            resetForm();
+          }
+          
+          reader.readAsDataURL(photoInput.files[0]);
+        } else {
+          newCard.innerHTML = cardContent;
+          grid.insertBefore(newCard, grid.firstChild);
+          resetForm();
+        }
+      }
+
+      function resetForm() {
+        document.getElementById('studentName').value = '';
+        document.getElementById('studentField').value = '';
+        document.getElementById('studentDest').value = '';
+        document.getElementById('studentText').value = '';
+        document.getElementById('studentPhoto').value = '';
+        alert("Thank you! Your story and photo have been posted to the community. 🎉");
+      }
+    </script>
+  </body>
+</html>

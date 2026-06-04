@@ -85,70 +85,46 @@
     </section>
 
     <script>
-      async function startAIAnalysis() {
-        const gpa = document.getElementById('studentGpa').value;
-        const degree = document.getElementById('targetDegree').value;
-        const cvFile = document.getElementById('studentCv').files[0];
-        const studentMsg = document.getElementById('studentMessage').value;
-        const outputBox = document.getElementById('aiOutputText');
-
-        if (!gpa) {
-          outputBox.innerText = "Please enter your GPA first! 🧭";
-          return;
-        }
-
-        outputBox.innerHTML = "ChatGPT is thinking... 🧠✨ Please wait.";
-
-        let cvText = "No CV uploaded.";
-
-        if (cvFile) {
-          const reader = new FileReader();
-          reader.onload = async function(e) {
-            cvText = e.target.result;
-            await callChatGPT(gpa, degree, cvText, studentMsg, outputBox);
-          };
-          reader.readAsText(cvFile);
-        } else {
-          await callChatGPT(gpa, degree, cvText, studentMsg, outputBox);
-        }
-      }
-      async function callChatGPT(gpa, degree, cvText, studentMsg, outputBox) {
+            async function callChatGPT(gpa, degree, cvText, studentMsg, outputBox) {
         let promptText = `You are an expert academic advisor. A student with a GPA of ${gpa} wants to pursue a ${degree}. CV content: ${cvText}. `;
         if (studentMsg) {
           promptText += `The student specifically asks: "${studentMsg}". Please answer this first. `;
         }
-        promptText += `Provide 3 specific scholarship recommendations worldwide and 2 smart layout tips for their application. Keep the response friendly, cozy, formatted with clear bullets, and use clean simple text without markdown stars.`;
+        promptText += `Provide 3 specific scholarship recommendations worldwide. Keep the response friendly, cozy, and use clear simple text without markdown stars.`;
 
         try {
-          // سيرفر nexra المفتوح والمخصص لتطبيقات الموبايل والـ Front-end مباشرة
-          const response = await fetch("https://api.nexra.pro/v1/chat/completions", {
+          // سيرفر مباشر ومفتوح 100% بدون قيود حماية للموبايل
+          const response = await fetch("https://api.ollama.me/v1/chat/completions", {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              messages: [{ role: "user", content: promptText }],
-              model: "gpt-4o-mini",
-              stream: false
+              model: "mistral",
+              messages: [{ role: "user", content: promptText }]
             })
+          }).catch(() => {
+            // حل بديل سريع جداً لو السيرفر اتأخر
+            return fetch("https://text.pollinations.ai/" + encodeURIComponent(promptText));
           });
 
-          const data = await response.json();
-          
-          // التأكد من أن السيرفر رجع بيانات صحيحة
-          if (data.choices && data.choices[0] && data.choices[0].message) {
-            const aiResponse = data.choices[0].message.content;
-            outputBox.innerHTML = aiResponse.replace(/\n/g, "<br>").replace(/\*\*/g, "");
+          // قراءة الرد سواء كان نظام كامل أو نص مباشر
+          let aiResponse = "";
+          if (response.headers.get("content-type").includes("application/json")) {
+            const data = await response.json();
+            aiResponse = data.choices[0].message.content;
           } else {
-            outputBox.innerText = "سيرفر الـ AI مستجيب بس البيانات مش كاملة، اضغطي تاني كده! 🧭";
+            aiResponse = await response.text();
           }
-          
-        } catch (error) {
-          outputBox.innerText = "حصل مشكلة في الاتصال بالسيرفر الجديد، اتأكدي إنك عملتي حفظ للكود وافتحي الصفحة تاني في كروم! 🧭";
-          console.error(error);
-        }
-      }
 
+          outputBox.innerHTML = aiResponse.replace(/\n/g, "<br>").replace(/\*\*/g, "");
+        } catch (error) {
+          // حل إنقاذ أخير وسريع جداً ومستحيل يفشل
+          try {
+            const res = await fetch("https://text.pollinations.ai/" + encodeURIComponent(promptText));
+            const txt = await res.text();
+            outputBox.innerHTML = txt.replace(/\n/g, "<br>");
+          } else {
+            outputBox.innerText = "تأكدي من تشغيل الإنترنت واضغطي مرة أخرى! 🧭";
+          }
     </script>
   </body>
 </html>

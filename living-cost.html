@@ -3,118 +3,205 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:wght@300..800&display=swap" rel="stylesheet">
-    <title>UniCompass - Living Cost</title>
+    <title>UniCompass - Ultimate Living Cost Guide</title>
+    
+    <style>
+      body { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDFBF7; display: flex; flex-direction: column; min-height: 100vh; color: #4E0A0B; }
+      .header { background-color: #4E0A0B; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+      .header .logo { width: 45px; height: 45px; object-fit: contain; border-radius: 8px; }
+      .links { display: flex; gap: 12px; align-items: center; }
+      .links a { color: #F2E5C6; text-decoration: none; font-size: 13px; font-family: "Oswald", sans-serif; text-transform: uppercase; }
+
+      .main-container { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 30px 20px; box-sizing: border-box; width: 100%; max-width: 800px; margin: 0 auto; }
+      .tracker-title { text-align: center; margin-bottom: 25px; }
+      .tracker-title h1 { font-family: "Oswald", sans-serif; font-size: 32px; color: #4E0A0B; margin: 0; text-transform: uppercase; }
+      .tracker-title p { color: #731F29; font-size: 14px; margin-top: 5px; }
+
+      .calculator-card { background-color: white; border: 1px solid #F2E5C6; border-radius: 16px; padding: 25px 20px; width: 100%; max-width: 500px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01); box-sizing: border-box; margin-bottom: 35px; }
+      .form-group { margin-bottom: 20px; }
+      .form-group label { display: block; font-size: 12px; color: #4E0A0B; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+      .form-group select { width: 100%; padding: 12px; border: 1px solid #F2E5C6; border-radius: 8px; outline: none; background-color: #FDFBF7; font-family: inherit; font-size: 14px; color: #4E0A0B; box-sizing: border-box; }
+      
+      .result-box { background-color: #4E0A0B; color: #F2E5C6; border-radius: 12px; padding: 20px; text-align: center; margin-top: 25px; box-sizing: border-box; }
+      .result-box h3 { margin: 0; font-family: "Oswald", sans-serif; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; color: #E38792; }
+      .result-box .price { font-size: 36px; font-family: "Oswald", sans-serif; font-weight: bold; margin: 10px 0 5px 0; color: #F2E5C6; }
+      .result-box p { font-size: 12px; margin: 0; opacity: 0.8; }
+
+      .dynamic-resources { width: 100%; margin-bottom: 35px; }
+      .country-resources-title { font-family: "Oswald", sans-serif; font-size: 22px; color: #4E0A0B; margin-bottom: 15px; text-transform: uppercase; border-bottom: 2px solid #731F29; padding-bottom: 5px; }
+      
+      .resource-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+      @media(min-width: 600px) { .resource-grid { grid-template-columns: 1fr 1fr; } }
+      
+      .resource-box { background-color: #fff; border: 1px solid #F2E5C6; border-radius: 12px; padding: 18px; box-sizing: border-box; }
+      .resource-box h4 { margin: 0 0 10px 0; font-family: "Oswald", sans-serif; font-size: 16px; text-transform: uppercase; color: #731F29; display: flex; align-items: center; gap: 8px; }
+      .resource-box ul { margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.6; }
+      .resource-box a { color: #E38792; font-weight: bold; text-decoration: underline; }
+      .resource-box a:hover { color: #4E0A0B; }
+
+      .info-sections { width: 100%; display: flex; flex-direction: column; gap: 25px; }
+      .info-card { background-color: white; border-left: 4px solid #731F29; border-radius: 8px; padding: 20px; border-top: 1px solid #F2E5C6; border-right: 1px solid #F2E5C6; border-bottom: 1px solid #F2E5C6; }
+      .info-card h2 { font-family: "Oswald", sans-serif; font-size: 20px; margin: 0 0 10px 0; text-transform: uppercase; color: #4E0A0B; display: flex; align-items: center; gap: 10px; }
+      .info-card p { font-size: 14px; color: #731F29; line-height: 1.6; margin: 0 0 10px 0; }
+      .info-card ul { margin: 0; padding-left: 20px; color: #4E0A0B; font-size: 13px; line-height: 1.8; }
+    </style>
   </head>
   <body>
 
-    <!-- 1️⃣ Navbar -->
+    <!-- Navbar -->
     <header class="header">
-      <img class="logo" src="logo.png" alt="Logo"/> 
+      <img class="logo" src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=100&auto=format&fit=crop&q=60" alt="Logo"/> 
       <div class="links">
         <a href="scholarships.html">scholarships</a>
-        <a href="living-cost.html">living cost</a>
-        <a href="#">Ai analyzer</a>
-        <button class="btn-signin">sign in</button>
+        <a href="living-cost.html" style="color: white; border-bottom: 2px solid #F2E5C6;">living cost</a>
+        <a href="ai-analyzer.html">Ai analyzer</a>
       </div>
     </header>
 
-    <!-- 2️⃣ Country Selector & Overview -->
-    <section class="cost-hero">
-      <h1>Cost of Living Guide</h1>
-      <p class="subtitle">Select your destination to see real student expenses</p>
-      
-      <div class="selector-box">
-        <select class="country-select">
-          <option value="germany">🇩🇪 Germany</option>
-          <option value="uk">🇬🇧 United Kingdom</option>
-          <option value="spain">🇪🇸 Spain</option>
-        </select>
-      </div>
-    </section>
-
-    <!-- 3️⃣ Expense Breakdown -->
-    <section class="cost-container">
-      
-      <div class="overview-card">
-        <h3>Estimated Monthly Budget</h3>
-        <p class="price-range">€850 - €1,050 / mo</p>
+    <!-- Content Area -->
+    <main class="main-container">
+      <div class="tracker-title">
+        <h1>Cost of Living & Survival Guide</h1>
+        <p>Estimate your budget and explore direct platforms to find apartments, jobs, and student stores.</p>
       </div>
 
-      <div class="expense-card">
-        <div class="expense-icon">🏠</div>
-        <div class="expense-info">
-          <h4>Accommodation</h4>
-          <p>Student dorms cost around €300-€400/mo. Private rooms go up to €550/mo.</p>
+      <div class="calculator-card">
+        <div class="form-group">
+          <label>🗺️ Select Destination</label>
+          <select id="countrySelect" onchange="updatePageData()">
+            <option value="italy">Italy 🇮🇹</option>
+            <option value="spain">Spain 🇪🇸</option>
+            <option value="south-korea">South Korea 🇰🇷</option>
+            <option value="usa">United States 🇺🇸</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>🏠 Accommodation Type</label>
+          <select id="housingSelect" onchange="updatePageData()">
+            <option value="dorm">University Dorm (Shared)</option>
+            <option value="studio">Private Studio Apartment</option>
+            <option value="shared-flat">Shared Apartment with Buddies</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>🍔 Food & Lifestyle Budget</label>
+          <select id="lifestyleSelect" onchange="updatePageData()">
+            <option value="cozy">Cozy & Minimalist (Cooking at home)</option>
+            <option value="moderate">Moderate (Cafes + Eating out sometimes)</option>
+            <option value="luxury">Luxury (Exploring & Premium Lifestyle)</option>
+          </select>
+        </div>
+
+        <div class="result-box">
+          <h3>Estimated Monthly Total</h3>
+          <div class="price" id="totalDisplay">$0</div>
+          <p id="detailsDisplay">Based on your custom selection</p>
         </div>
       </div>
 
-      <div class="expense-card">
-        <div class="expense-icon">🍏</div>
-        <div class="expense-info">
-          <h4>Food & Groceries</h4>
-          <p>Expect to spend around €200-€250/mo if you cook at home.</p>
+      <div class="dynamic-resources">
+        <div class="country-resources-title" id="resourceTitle">Resources for Italy 🇮🇹</div>
+        
+        <div class="resource-grid">
+          <div class="resource-box">
+            <h4>🏠 Find Apartments</h4>
+            <ul id="housingLinks">
+
+            </ul>
+          </div>
+          
+          <div class="resource-box">
+            <h4>💼 Student Jobs & Internships</h4>
+            <ul id="jobLinks">
+            </ul>
+          </div>
+
+          <div class="resource-box">
+            <h4>🛒 Budget Groceries & Essentials</h4>
+            <ul id="marketLinks">
+            </ul>
+          </div>
+
+          <div class="resource-box">
+            <h4>💡 Student Life & Bookstore Hack</h4>
+            <ul id="hacksLinks">
+
+            </ul>
+          </div>
         </div>
       </div>
 
-    </section>
-
-    <!-- 4️⃣ Student Survival Guide Links -->
-    <section class="guide-links-section">
-      <h3>🎒 Student Survival Links</h3>
-      
-      <div class="guide-category">
-        <h4>Housing Websites</h4>
-        <a href="https://www.wg-gesucht.de" target="_blank" class="guide-link">🌐 Find Student Housing (WG-Gesucht)</a>
+      <div class="info-sections">
+        <div class="info-card">
+          <h2>🏠 Accommodation Basics</h2>
+          <p>Finding the right place to live is your biggest step. Dorms are cheapest, while Shared Flats are amazing for socializing and dividing expenses.</p>
+        </div>
+        <div class="info-card">
+          <h2>🍔 Food & Groceries Strategy</h2>
+          <p>Cooking at home using local discount hypermarkets saves up to 60% of your student pocket money.</p>
+        </div>
       </div>
+    </main>
 
-      <div class="guide-category">
-        <h4>Student Jobs</h4>
-        <a href="https://www.indeed.com" target="_blank" class="guide-link">💼 Search Part-Time Jobs (Indeed)</a>
-      </div>
 
-      <div class="guide-category">
-        <h4>Cheapest Supermarkets</h4>
-        <p class="shop-names">🛒 Shop at: <strong>Aldi, Lidl, Netto</strong> for the best prices.</p>
-      </div>
+    <script>
+      const costDatabase = {
+        'italy': { base: 300, dorm: 250, studio: 550, flat: 350, cozy: 200, moderate: 350, luxury: 600, currency: "€", name: "Italy 🇮🇹" },
+        'spain': { base: 280, dorm: 220, studio: 500, flat: 320, cozy: 180, moderate: 300, luxury: 550, currency: "€", name: "Spain 🇪🇸" },
+        'south-korea': { base: 400000, dorm: 350000, studio: 650000, flat: 450000, cozy: 250000, moderate: 450000, luxury: 800000, currency: "₩", name: "South Korea 🇰🇷" },
+        'usa': { base: 500, dorm: 600, studio: 1200, flat: 750, cozy: 300, moderate: 500, luxury: 900, currency: "$", name: "United States 🇺🇸" }
+      };
 
-      <div class="guide-category">
-        <h4>First-Day Essentials</h4>
-        <p class="shop-names">📦 Get cheap blankets & kitchen tools from: <strong>IKEA, Action, or thrift shops</strong>.</p>
-      </div>
+      const linksDatabase = {
+        'italy': {
+          housing: ['<li><a href="https://www.idealista.it/en/" target="_blank">Idealista</a> - Top site for rooms & flats</li>', '<li><a href="https://www.uniplaces.com/" target="_blank">Uniplaces</a> - Safe student housing booking</li>'],
+          jobs: ['<li><a href="https://it.indeed.com/" target="_blank">Indeed Italy</a> - Part-time student jobs</li>', '<li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a> - Best for tech & engineering internships</li>'],
+          markets: ['<li><strong>Eurospin & Lidl:</strong> Best ultra-budget supermarkets for groceries.</li>', '<li><strong>Eurospin:</strong> Famous for very cheap daily food items.</li>'],
+          hacks: ['<li><a href="https://www.librerie.coop/" target="_blank">Librerie.coop</a> - Used & new academic books.</li>', '<li>Get the "Codice Fiscale" immediately to rent legally.</li>']
+        },
+        'spain': {
+          housing: ['<li><a href="https://www.fotocasa.es/es/" target="_blank">Fotocasa</a> - Great flat hunting in Spain</li>', '<li><a href="https://www.badi.com/" target="_blank">Badi</a> - Top app to rent rooms from flatmates</li>'],
+          jobs: ['<li><a href="https://www.infojobs.net/" target="_blank">InfoJobs</a> - Most popular job board in Spain</li>', '<li><a href="https://www.studentjob.es/" target="_blank">StudentJob</a> - Perfect for flexible hours</li>'],
+          markets: ['<li><strong>Mercadona & Dia:</strong> Highly budget-friendly grocery stores.</li>', '<li><strong>Alcampo:</strong> Great for cheap household supplies.</li>'],
+          hacks: ['<li><a href="https://www.casadellibro.com/" target="_blank">Casa del Libro</a> - Massive student book store</li>', '<li>Apply for the "Empadronamiento" for local city discounts.</li>']
+        },
+        'south-korea': {
+          housing: ['<li><a href="https://www.dabangapp.com/" target="_blank">Dabang</a> / Zigbang - Ultimate Korean studio apps</li>', '<li>Look for <strong>Goshiwon</strong> (mini single-rooms) for no-deposit budget options.</li>'],
+          jobs: ['<li><a href="https://www.albamon.com/" target="_blank">Albamon</a> - The King app for student part-time jobs</li>', '<li><a href="https://www.jobkorea.co.kr/" target="_blank">JobKorea</a> - Good for corporate student interns</li>'],
+          markets: ['<li><strong>No Brand:</strong> Best generic cheap super store in Korea.</li>', '<li><strong>Daiso Korea:</strong> Paradise for ultra-cheap stationery, notebooks, and rooms decor.</li>'],
+          hacks: ['<li><a href="https://www.kyobobook.co.kr/" target="_blank">Kyobo Book Centre</a> - Best English & Korean bookstore</li>', '<li>Download KakaoMap (Google Maps does not work well here).</li>']
+        },
+        'usa': {
+          housing: ['<li><a href="https://www.apartments.com/" target="_blank">Apartments.com</a> - Safe legal rentals</li>', '<li><a href="https://www.roomster.com/" target="_blank">Roomster</a> - Verified flatmates & shared rooms</li>'],
+          jobs: ['<li><a href="https://www.handshake.com/" target="_blank">Handshake</a> - Used by universities for on-campus jobs</li>', '<li><a href="https://www.snagajob.com/" target="_blank">Snagajob</a> - Hourly retail and cafe work</li>'],
+          markets: ['<li><strong>Walmart & Aldi:</strong> Best chains for cheapest student shopping.</li>', '<li><strong>Dollar Tree:</strong> Everything for $1.25 (Great for stationery & snacks).</li>'],
+          hacks: ['<li><a href="https://www.chegg.com/books" target="_blank">Chegg Books</a> - Best site to rent university textbooks cheaply</li>', '<li>Always look for student night vouchers on ক্যাম্পাস groups.</li>']
+        }
+      };
 
-    </section>
-<!-- 🧮 Budget Calculator Section -->
-<section style="padding: 0 15px 30px 15px; background-color: #FDFBF7;">
-  <div class="calc-card">
-    <h3>🧮 Calculate Your Custom Budget</h3>
-    
-    <div class="calc-input-group">
-      <label>Rent / Accommodation (€)</label>
-      <input type="number" id="rentInput" placeholder="e.g. 350">
-    </div>
+      function updatePageData() {
+        const country = document.getElementById('countrySelect').value;
+        const housing = document.getElementById('housingSelect').value;
+        const lifestyle = document.getElementById('lifestyleSelect').value;
+        
+        const countryData = costDatabase[country];
+        let total = countryData.base + countryData[housing] + countryData[lifestyle];
+        document.getElementById('totalDisplay').innerText = `${countryData.currency}${total.toLocaleString()}`;
+        document.getElementById('detailsDisplay').innerText = `Includes: Average transport, ${housing.replace('-', ' ')} housing, and a ${lifestyle} lifestyle.`;
 
-    <div class="calc-input-group">
-      <label>Food & Groceries (€)</label>
-      <input type="number" id="foodInput" placeholder="e.g. 200">
-    </div>
+        document.getElementById('resourceTitle').innerText = `Resources & Survival Links for ${countryData.name}`;
+        
+        const links = linksDatabase[country];
+        document.getElementById('housingLinks').innerHTML = links.housing.join('');
+        document.getElementById('jobLinks').innerHTML = links.jobs.join('');
+        document.getElementById('marketLinks').innerHTML = links.markets.join('');
+        document.getElementById('hacksLinks').innerHTML = links.hacks.join('');
+      }
 
-    <button class="btn-calc" onclick="calculateTotal()">Calculate Total</button>
-    
-    <p class="calc-result" id="totalResult">Total: €0 / month</p>
-  </div>
-</section>
-
-<!-- ⚡ JavaScript Code to make it work -->
-<script>
-  function calculateTotal() {
-    let rent = parseFloat(document.getElementById('rentInput').value) || 0;
-    let food = parseFloat(document.getElementById('foodInput').value) || 0;
-    let total = rent + food;
-    document.getElementById('totalResult').innerText = "Total: €" + total + " / month";
-  }
-</script>
-
+      window.onload = updatePageData;
+    </script>
   </body>
 </html>
